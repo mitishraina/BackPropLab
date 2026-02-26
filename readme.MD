@@ -15,4 +15,4 @@ This repo serves two purposes:
 - Transformers & LLMs(Scaled Dot Product, Multi Head, Encoder-Decoder, PEFT etc.)
 
 
-### This is an active implementation sprint.
+### NOTE: This is an active implementation sprint.
