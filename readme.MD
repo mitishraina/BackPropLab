@@ -16,3 +16,4 @@ This repo serves two purposes:
 
 
 ### NOTE: This is an active implementation sprint.
+### WOL = Without Library, WL = With Library
