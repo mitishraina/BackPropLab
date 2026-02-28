@@ -26,9 +26,6 @@ model.fit(X_train_scaled, y_train)
 
 y_pred = model.predict(X_test_scaled)
 
-print("Accuracy:", accuracy_score(y_test, y_pred))
-print("\nClassification Report:\n", classification_report(y_test, y_pred))
-
 # 2. using pipeline
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
@@ -38,5 +35,6 @@ pipeline = Pipeline([
 pipeline.fit(X_train, y_train)
 
 y_pred = pipeline.predict(X_test)
+
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
