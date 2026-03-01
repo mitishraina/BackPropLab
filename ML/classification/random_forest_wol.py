@@ -1,5 +1,5 @@
 # random forest
-# 1. supervised learning algo or bagging ensemble learning method
+# 1. supervised learning algo or bagging ensemble learning method(variance reduction technique)
 # 2. builds multiple decision tress during training and merges their predictions to produce a more accurate and stable result that a single tree
 
 import numpy as np
