@@ -6,9 +6,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.pipeline import Pipeline
 
-iris = load_iris()
-X = iris.data
-y = iris.target
+data = load_iris()
+X = pd.DataFrame(data.data, columns=data.feature_names)
+y = pd.Series(data.target)
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
