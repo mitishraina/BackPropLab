@@ -52,3 +52,44 @@ class GRU(nn.Module):
         outputs = torch.cat(outputs, dim=1)
         
         return outputs, h
+    
+    
+# import torch
+# import torch.nn as nn
+
+# class GRUModel(nn.Module):
+#     def __init__(self, input_size, hidden_size, num_layers=1):
+#         super(GRUModel, self).__init__()
+        
+#         self.gru = nn.GRU(
+#             input_size=input_size,
+#             hidden_size=hidden_size,
+#             num_layers=num_layers,
+#             batch_first=True
+#         )
+
+#     def forward(self, x, h0=None):
+#         # x: (batch_size, seq_len, input_size)
+        
+#         if h0 is None:
+#             output, h_n = self.gru(x)
+#         else:
+#             output, h_n = self.gru(x, h0)
+            
+#         return output, h_n
+
+
+# # Example usage
+# if __name__ == "__main__":
+#     batch_size = 4
+#     seq_len = 10
+#     input_size = 8
+#     hidden_size = 16
+
+#     x = torch.randn(batch_size, seq_len, input_size)
+
+#     model = GRUModel(input_size, hidden_size)
+#     output, h_n = model(x)
+
+#     print("Output shape:", output.shape)  # (4, 10, 16)
+#     print("Hidden state shape:", h_n.shape)  # (1, 4, 16)
