@@ -35,47 +35,34 @@ $$
 - Working of a ***Perceptron***: 
     1. initializes weights as w=0 and b=0
     2. For each sample $x_i$:
-    $$
-    z_i = w^T x_i + b
-    $$
+
+    $$z_i = w^T x_i + b$$
 
     3. Apply activation function
     - Prediction rule:
 
-    $$
-    \hat{y}_i =
+    $$\hat{y}_i =
     \begin{cases}
     1 & \text{if } z_i \ge 0 \\
     -1 & \text{if } z_i < 0
-    \end{cases}
-    $$
+    \end{cases}$$
 
     4. Weight update rule
     - Weight update rule (if misclassified):
 
-        $$
-        w := w + \eta y_i x_i
-        $$
+        $$w := w + \eta y_i x_i$$
 
-        $$
-        b := b + \eta y_i
-        $$
+        $$b := b + \eta y_i$$
 
     5. Prediction:
 
-    $$
-    z = w^T X + b
-    $$
+    $$z = w^T X + b$$
 
-    $$
-    \hat{y} = \text{sign}(z)
-    $$
+    $$\hat{y} = \text{sign}(z)$$
 
     ### Perceptron condition for correct classification:
 
-    $$
-    y_i (w^T x_i + b) > 0
-    $$
+    $$y_i (w^T x_i + b) > 0$$
 
 
 ## MLP
@@ -328,9 +315,7 @@ $$
 *Why it matters?* (This requires applying chain rule repeatedly backward through all layers)
 
 - In Neural Networks, output depends on many layers of function. So to update weights, we need gradient of loss function L with respect to each weight $w_i$:
-$$
-dL / dw_i
-$$
+$$dL / dw_i$$
 
 TLDR; 
 
