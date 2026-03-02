@@ -14,7 +14,7 @@ and so on..
 ## Perceptron
 - A single layer neural network having only input & output layers
 - Limited to linearly separably problems
-- [Perceptron](DL\perceptron.py) learns a linear decision boundary: w.x + b = 0
+- [Perceptron](perceptron.py) learns a linear decision boundary: w.x + b = 0
 - The perceptron model: **function x is calculated by some weight muliplied by input and add some bias to it**
 
 $$
@@ -86,7 +86,7 @@ $$
 If the output is wrong, how do we know which hidden weight caused the error?
 ```
 This is the credit assignment problem.
-- [MLP](DL\MLP.py), for this we use a two layer MLP, an input layer, one hidden layer, and one output neuron. For ```_initialize_hyperparameters```:
+- [MLP](MLP.py), for this we use a two layer MLP, an input layer, one hidden layer, and one output neuron. For ```_initialize_hyperparameters```:
 ```bash
 self.W1 = np.random.randn(self.input_size, self.hidden_size) * 0.01
 ```
