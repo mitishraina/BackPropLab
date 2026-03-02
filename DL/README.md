@@ -315,6 +315,7 @@ $$
 *Why it matters?* (This requires applying chain rule repeatedly backward through all layers)
 
 - In Neural Networks, output depends on many layers of function. So to update weights, we need gradient of loss function L with respect to each weight $w_i$:
+
 $$dL / dw_i$$
 
 TLDR; 
