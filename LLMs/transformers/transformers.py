@@ -6,24 +6,22 @@ from tf_decoder_stacked import TransformerDecoder
 
 def softmax(x):
     x = x - np.max(x, axis=-1, keepdims=True)
-    
     exp = np.exp(x)
-    
     return exp / np.sum(exp, axis=-1, keepdims=True)
 
 class Transformer:
     def __init__(self, src_vocab_size, tgt_vocab_size, d_model, num_heads, num_layers, d_ff, max_len: int=5000):
         self.d_model = d_model
         
-        self.src_embedding = np.random.randn(
+        self.src_embedding = (np.random.randn(
             src_vocab_size,
             d_model
-        ) * 0.01
+        ) / np.sqrt(d_model))
         
-        self.tgt_embedding = np.random.randn(
+        self.tgt_embedding =( np.random.randn(
             tgt_vocab_size,
             d_model
-        ) * 0.01
+        ) / np.sqrt(d_model))
         
         self.encoder = TransformerEncoder(
             num_layers,
@@ -41,17 +39,16 @@ class Transformer:
             max_len
         )
         
-        self.W_out = np.random.randn(
+        self.W_out = (np.random.randn(
             d_model,
             tgt_vocab_size
-        ) * 0.01
+        ) / np.sqrt(d_model))
         
     def embed(self, tokens, embedding_matrix):
-        batch, seq_len = tokens.shape
         embeddings = embedding_matrix[tokens]
-        return embeddings
+        return embeddings * np.sqrt(self.d_model)
     
-    def forward(self, src_tokens, tgt_tokens, mask=None):
+    def forward(self, src_tokens, tgt_tokens, src_mask=None, tgt_mask=None):
         src = self.embed(
             src_tokens,
             self.src_embedding
@@ -59,7 +56,7 @@ class Transformer:
         
         encoder_output = self.encoder.forward(
             src, 
-            mask
+            src_mask
         )
         
         tgt = self.embed(
@@ -70,7 +67,8 @@ class Transformer:
         decoder_output = self.decoder.forward(
             tgt,
             encoder_output,
-            mask
+            tgt_mask,
+            src_mask
         )
         
         logits = decoder_output @ self.W_out
@@ -82,3 +80,8 @@ class Transformer:
 # decoder generates at each step which attends to:
     # 1. previous generated tokens
     # 2. encoder representation
+    
+# one thing to remember: decoder layer internally have three sublayers
+# 1. masked multihead attention
+# 2. cross attention(encoder output)
+# 3. feed forward

@@ -18,7 +18,7 @@ class TransformerDecoder:
         
         self.pos_encoding = PositionalEncoding(
             d_model,
-            d_ff
+            max_len
         )
         
         self.layers = [
@@ -30,7 +30,7 @@ class TransformerDecoder:
             for _ in range(num_layers)
         ]
         
-    def forward(self, X, encoder_output, mask=None):
+    def forward(self, X, encoder_output, tgt_mask=None, src_mask=None):
         """
         X shape: (batch, seq_len, d_model)
         """
@@ -39,7 +39,7 @@ class TransformerDecoder:
         
         for layer in self.layers:
             X = layer.forward(
-                X, encoder_output, mask
+                X, encoder_output, tgt_mask, src_mask
             )
         
         return X
